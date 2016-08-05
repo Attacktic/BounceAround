@@ -60,7 +60,7 @@ function typeIcon(type){
 var map;
 function initMap() {
   $.ajax({
-      url: `http://localhost:3000/trips/last/${user_id}`,
+      url: `https://bounce-around.herokuapp.com/trips/last/${user_id}`,
       success: function(trips){
   var startPoint = {lat: Number(trips[0].city_coordinates.slice(1,-1).split(",")[0]), lng: Number(trips[0].city_coordinates.slice(1,-1).split(",")[1])}
   map = new google.maps.Map(document.getElementById('map'), {
@@ -73,7 +73,7 @@ function initMap() {
   });
 
   var id = $('.last_trip').attr("id");
-  var url = `http://localhost:3000/activities/trip/${id}`;
+  var url = `https://bounce-around.herokuapp.com/activities/trip/${id}`;
 
   $.ajax({
       url: url,

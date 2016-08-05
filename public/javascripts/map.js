@@ -14,7 +14,6 @@ cookies.forEach(function(cookie){
   }
 });
 
-
 var trip_id = window.location.href.substring(window.location.href.lastIndexOf('/')-1, window.location.href.lastIndexOf('/'));
 //function start
 String.prototype.capitalize = function() {
@@ -59,7 +58,7 @@ function typeIcon(type){
 //function end
 function initMap() {
   $.ajax({
-      url: `http://localhost:3000/trips/last/${user_id}`,
+      url: `https://bounce-around.herokuapp.com/trips/last/${user_id}`,
       success: function(trips){
         console.log(trips)
   var startPoint = {lat: Number(trips[0].city_coordinates.slice(1,-1).split(",")[0]), lng: Number(trips[0].city_coordinates.slice(1,-1).split(",")[1])}
@@ -81,7 +80,7 @@ function initMap() {
 
   autocomplete.addListener('place_changed', onPlaceChanged);
 
-  var url = `http://localhost:3000/activities/trip/${trip_id}`;
+  var url = `https://bounce-around.herokuapp.com/activities/trip/${trip_id}`;
   $.ajax({
       url: url,
       success: function(markers){
@@ -199,7 +198,7 @@ function addResult(result, i) {
   var iconTd = document.createElement('td');
   var nameTd = document.createElement('td');
   var icon = document.createElement('img');
-  icon.src = 'http://i.imgur.com/xmsSDVo.png';
+  icon.src = 'https://i.imgur.com/xmsSDVo.png';
   icon.setAttribute('class', 'placeIcon');
   icon.setAttribute('className', 'placeIcon');
   var name = document.createTextNode(result.name);
